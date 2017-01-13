@@ -19,19 +19,19 @@ one:
   vote_count: 1
 
 two:
-  title: MyString
-  status: MyString
-  overview: MyText
-  release_date: 2017-01-13
-  language: MyString
+  title: StarWars
+  status: released
+  overview: Overview
+  release_date: 1901-01-13
+  language: en
   imdb_id: MyString
   themoviedb_id: 1
-  budget: 1
+  budget: 1000
   backdrop_path: MyString
   adult: false
-  revenue: 1
-  runtime: 1
-  tagline: MyString
-  video: false
+  revenue: 1000000000
+  runtime: 120
+  tagline: May the Force be with you
+  video: true
   vote_average: 9.99
   vote_count: 1

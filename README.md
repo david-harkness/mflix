@@ -10,8 +10,19 @@ Things you may want to cover:
 * System dependencies
 
 * Configuration
+RAILS_ENV=test rake db:create
+RAILS_ENV=test rake db:migrate
+
 
 * Database creation
+
+```
+rake db:create
+rake db:migrate
+
+RAILS_ENV=test rake db:create
+RAILS_ENV=test rake db:migrate
+```
 
 * Database initialization
 
