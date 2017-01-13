@@ -6,6 +6,9 @@
 
 # Ignore bundler config.
 /.bundle
+.idea/workspace.xml
+.idea/mflix.iml
+*.swp
 
 # Ignore all logfiles and tempfiles.
 /log/*

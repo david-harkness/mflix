@@ -23,6 +23,9 @@ Things you may want to cover:
 
 * ...
 
+## Setup
+```export MOVIEDB_KEY='mykey'```
+
 ## Setup on Heroku
 
 ####Since we're using mysql instead of PostgreSQL
@@ -31,4 +34,5 @@ heroku addons:create cleardb:ignite
 heroku addons:destroy heroku-postgresql
 heroku config | grep CLEARDB_DATABASE_URL
 heroku config:set DATABASE_URL='mysql2://my-url'
+heroku config:set MOVIEDB_KEY='mykey'
 ```
