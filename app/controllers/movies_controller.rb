@@ -12,6 +12,11 @@ class MoviesController < ApplicationController
   def show
   end
 
+  def search
+    params.permit(:title)
+    render :json => params.to_json
+  end
+
   # GET /movies/new
   def new
     @movie = Movie.new

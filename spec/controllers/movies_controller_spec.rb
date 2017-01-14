@@ -24,7 +24,7 @@ RSpec.describe MoviesController, type: :controller do
   # Movie. As you add validations to Movie, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+
     {:title => "Title",
         :status => "released",
         :overview => "Overview of movie",
