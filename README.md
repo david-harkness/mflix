@@ -1,11 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Production Link
+https://david-mflix.herokuapp.com/
 
-Things you may want to cover:
 
-* Ruby version
 
 * System dependencies
 
@@ -47,3 +45,9 @@ heroku config | grep CLEARDB_DATABASE_URL
 heroku config:set DATABASE_URL='mysql2://my-url'
 heroku config:set MOVIEDB_KEY='mykey'
 ```
+
+
+### TODO
+* Pagination
+* Extra Tests
+  (currently using rspec)
