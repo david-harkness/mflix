@@ -9,6 +9,7 @@ class Album extends React.Component {
 
     renderPhoto(i) {
         movie = this.state.movies[i];
+        if (movie == null) return ''; // Not enough movies in the result set
         return(<div className='card'>
             <img src={movie.backdrop_path_m} alt='Card image cap' />
             <p className='card-text'>
@@ -58,7 +59,6 @@ class Album extends React.Component {
                         {this.renderPhoto(6)}
                         {this.renderPhoto(7)}
                         {this.renderPhoto(8)}
-
                     </div>
                 </div>
             </div>
