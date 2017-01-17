@@ -30,7 +30,15 @@ class MovieSearchService
       themoviedb_id: m['id']
       }
     )
-    movie.save!
+    begin
+      # Not everything includes a background
+      # Poormans way of dealing with this for now
+      # TODO: Save anyway, put better logic elsewhere
+      movie.save!
+    rescue
+      Rails.logger.debug("Movie Failed to Save: \n #{m}")
+    end
+
   end
 
   def sync_movies
