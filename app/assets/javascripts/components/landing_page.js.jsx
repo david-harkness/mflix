@@ -38,15 +38,27 @@ class Album extends React.Component {
         return (
             <div>
                 <section className="jumbotron text-center">
-                    <div className="container">
-                        <h1 className="jumbotron-heading">Movie Flix</h1>
-                        <p className="lead text-muted">Search Movies from themoviedb</p>
-                        <form className="form-inline" onSubmit={this.submit.bind(this)}>
-                            <div className="form-group offset-sm-4  mx-sm-4">
-                                <input  className="form-control" id="search-movies-box"  />
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col">
+                                <h1 className="jumbotron-heading">Movie Flix</h1>
+                                <p className="lead text-muted">Search Movies from themoviedb</p>
                             </div>
-                            <button  className="btn btn-primary" >Search</button>
-                        </form>
+
+                        </div>
+                        <br/>
+                        <div className="row">
+                            <div className="col-lg-6 col-centered offset">
+                                <form className="form-inline" onSubmit={this.submit.bind(this)}>
+                                    <div className="input-group all-width">
+                                        <input id="search-movies-box"  type="text" className="form-control" placeholder="Search for..." />
+                                      <span className="input-group-btn">
+                                        <button className="btn btn-primary" type="button">Search</button>
+                                      </span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
 
                 </section>
