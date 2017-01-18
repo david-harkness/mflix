@@ -10,14 +10,17 @@ class Album extends React.Component {
     renderPhoto(i) {
         movie = this.state.movies[i];
         if (movie == null) return ''; // Not enough movies in the result set
-        return(<div className='card'>
-            <img src={movie.backdrop_path_m} alt='Card image cap' />
-            <p className='card-text'>
-                <b>{movie.title}</b><br/>
+        return(<div className="col">
 
-                <b>Release Date: {movie.release_date}</b><br/>
-                <b>Average Vote: {movie.vote_average}</b><br/>
-                <br/>{movie.overview}</p>
+            <div className='card'>
+                <img src={movie.backdrop_path_m} alt='Card image cap' />
+                <p className='card-text'>
+                    <b>{movie.title}</b><br/>
+
+                    <b>Release Date: {movie.release_date}</b><br/>
+                    <b>Average Vote: {movie.vote_average}</b><br/>
+                    <br/>{movie.overview}</p>
+            </div>
         </div>);
     }
     submit(e) {
@@ -48,14 +51,18 @@ class Album extends React.Component {
 
                 </section>
             <div className='album text-muted'>
-                <div className='container'>
+                <div className='container-fluid'>
                     <div className='row'>
                         {this.renderPhoto(0)}
                         {this.renderPhoto(1)}
                         {this.renderPhoto(2)}
+                    </div>
+                    <div className='row'>
                         {this.renderPhoto(3)}
                         {this.renderPhoto(4)}
                         {this.renderPhoto(5)}
+                    </div>
+                    <div className='row'>
                         {this.renderPhoto(6)}
                         {this.renderPhoto(7)}
                         {this.renderPhoto(8)}
