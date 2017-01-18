@@ -11,7 +11,7 @@ Rails.application.routes.draw do
         get '/search' => 'movies#search'
 
       end
-      resources :movies
+      resources :movies, :only => [:index, :show]
     end
   end
 end
