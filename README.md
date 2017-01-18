@@ -3,6 +3,18 @@
 ### Production Link
 https://david-mflix.herokuapp.com/
 
+### Routes
+
+Search for Star Wars
+
+```
+/api/v1/movies/search.json?title=star%20wars&page=1
+```
+
+```
+Single Movie
+/api/v1/movies/140
+```
 
 
 * System dependencies

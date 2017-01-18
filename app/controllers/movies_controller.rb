@@ -14,11 +14,12 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
-    render :json => MoviePresenter.new(@movie)
+    render :json => MoviePresenter.new(@movie).view
   end
 
   def search
-    params.require(:title) # TODO: Pagination
+    params.permit(:title)
+    params.permit(:page)
 
     search_by_title
     if @movies.size < 9  # Sync to Movies if less than 9 results
@@ -84,7 +85,7 @@ class MoviesController < ApplicationController
     def search_by_title
       # TODO: Need a global rate limiter on this thing! (redis perhaps?)
       # Elastic Search would go well here...
-      @movies = Movie.where("title like ?", "%#{params[:title]}%").where.not(backdrop_path: nil).map {|x| MoviePresenter.new(x).view}
+      @movies = Movie.page(params[:page]).title_search(params[:title]).map {|x| MoviePresenter.new(x).view}
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_movie

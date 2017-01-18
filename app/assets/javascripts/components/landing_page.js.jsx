@@ -3,7 +3,7 @@
 class Album extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {search_value: 'Star Wars', movies: props.data};
+        this.state = {page: 1, search_value: 'Star Wars', movies: props.data};
         this.state
     }
 
@@ -23,16 +23,78 @@ class Album extends React.Component {
             </div>
         </div>);
     }
-    submit(e) {
-        e.preventDefault();
+    getMore() {
         // TODO: jQuery is not the React way to handle this
         $.ajax({
             type : 'GET',
-            url : "/api/v1/movies/search.json?title=" + $('#search-movies-box').val(),
+            url : "/api/v1/movies/search.json?page=" + this.state.page + "&title=" + $('#search-movies-box').val(),
             success : function(data){
                 this.setState({ movies : data });
             }.bind(this)
         });
+    }
+    submit(e) {
+        e.preventDefault();
+        this.getMore();
+
+
+    }
+    prevPage(e) {
+        let page;
+        page = this.state.page  -1;
+        if (page < 1) {
+            page = 1;
+        } else {
+            this.setState({page:(this.state.page - 1 )}, function () {
+                this.getMore();
+            });
+        }
+
+    }
+    nextPage(e) {
+        this.setState({page:(this.state.page + 1)}, function () {
+            this.getMore();
+        });
+    }
+    prevButton() {
+        if (this.state.page > 1)
+        return (
+
+                <button  className="btn btn-primary" type="button" onClick={this.prevPage.bind(this)}>Prev</button>
+            )
+
+    }
+    gallery() {
+        return (
+            <div className='album text-muted'>
+                <div className='row'>
+                    <div className="col-lg-1 col-centered ">
+                        {this.prevButton()}
+                    </div>
+                    <div className="col-lg-1 col-centered ">
+                        <button  className="btn btn-primary" type="button" onClick={this.nextPage.bind(this)}>Next</button>
+                    </div>
+                </div>
+                <div className='container-fluid'>
+                    <div className='row'>
+                        {this.renderPhoto(0)}
+                        {this.renderPhoto(1)}
+                        {this.renderPhoto(2)}
+                    </div>
+                    <div className='row'>
+                        {this.renderPhoto(3)}
+                        {this.renderPhoto(4)}
+                        {this.renderPhoto(5)}
+                    </div>
+                    <div className='row'>
+                        {this.renderPhoto(6)}
+                        {this.renderPhoto(7)}
+                        {this.renderPhoto(8)}
+                    </div>
+
+                </div>
+            </div>
+        )
     }
     render() {
         return (
@@ -62,26 +124,10 @@ class Album extends React.Component {
                     </div>
 
                 </section>
-            <div className='album text-muted'>
-                <div className='container-fluid'>
-                    <div className='row'>
-                        {this.renderPhoto(0)}
-                        {this.renderPhoto(1)}
-                        {this.renderPhoto(2)}
-                    </div>
-                    <div className='row'>
-                        {this.renderPhoto(3)}
-                        {this.renderPhoto(4)}
-                        {this.renderPhoto(5)}
-                    </div>
-                    <div className='row'>
-                        {this.renderPhoto(6)}
-                        {this.renderPhoto(7)}
-                        {this.renderPhoto(8)}
-                    </div>
-                </div>
+                {this.gallery()}
+
             </div>
-            </div>);
+        );
     }
 }
 
